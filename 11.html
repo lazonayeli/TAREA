@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desplazamiento con Teclas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            overflow: hidden; 
+            margin: 0;
+            padding: 0;
+        }
+        #elemento {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-bottom: 50px solid #9c1e92; 
+            transition: background-color 0.3s; 
+        }
+    </style>
+</head>
+<body>
+    <div id="elemento"></div>
+
+    <script>
+        
+        var elemento = document.getElementById('elemento');
+
+        
+        function desplazarElemento(event) {
+            var velocidad = 10; 
+            var teclaPresionada = event.key;
+            var elementoStyle = getComputedStyle(elemento);
+            var topActual = parseFloat(elementoStyle.top);
+            var leftActual = parseFloat(elementoStyle.left);
+
+          
+            if (teclaPresionada === 'ArrowUp') {
+                elemento.style.top = (topActual - velocidad) + 'px';
+            } else if (teclaPresionada === 'ArrowDown') {
+                elemento.style.top = (topActual + velocidad) + 'px';
+            } else if (teclaPresionada === 'ArrowLeft') {
+                elemento.style.left = (leftActual - velocidad) + 'px';
+            } else if (teclaPresionada === 'ArrowRight') {
+                elemento.style.left = (leftActual + velocidad) + 'px';
+            }
+        }
+
+        document.addEventListener('keydown', desplazarElemento);
+    </script>
+</body>
+</html>

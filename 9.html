@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista con Agregar y Eliminar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #e6e6fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        }
+        .list-item {
+            list-style-type: none;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #ceb3d8;
+            border-radius: 5px;
+        }
+        .btn-add {
+            background-color: #7945df;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-right: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-delete {
+            background-color: #c78eb8; 
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Ingresa los datos:</h2>
+        <input type="text" id="item-input" placeholder="Ingrese un elemento">
+        <button onclick="addItem()" class="btn-add">Agregar :)</button>
+        <ul id="item-list"></ul>
+    </div>
+
+    <script>
+        function addItem() {
+            var input = document.getElementById("item-input");
+            var item = input.value.trim();
+            
+            if (item !== "") {
+                var list = document.getElementById("item-list");
+                var li = document.createElement("li");
+                li.textContent = item;
+                li.classList.add("list-item");
+
+                var deleteButton = document.createElement("button");
+                deleteButton.textContent = "Eliminar";
+                deleteButton.classList.add("btn-delete");
+                deleteButton.onclick = function() {
+                    list.removeChild(li);
+                };
+
+                li.appendChild(deleteButton);
+                list.appendChild(li);
+                
+                input.value = "";
+            } else {
+                alert("Por favor, ingrese un elemento.");
+            }
+        }
+    </script>
+</body>
+</html>

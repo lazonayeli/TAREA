@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suma de Números en un Array</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #6a0dad; 
+            color: #fff; 
+            margin-top: 50px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background-color: #8c6db0; 
+            padding: 20px;
+            border-radius: 10px;
+        }
+        #input-array {
+            width: 100%;
+        }
+        #resultado {
+            margin-top: 20px;
+        }
+        button {
+            background-color: #9e58a1; 
+            border-color: #9e58a1; 
+        }
+        button:hover {
+            background-color: #d97bb0; 
+            border-color: #d97bb0; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Suma de Números en un Array</h2>
+        <div class="mb-3">
+            <label for="input-array" class="form-label">Ingrese los números separados por comas:</label>
+            <input type="text" class="form-control" id="input-array" placeholder="Ej: 1, 2, 3">
+        </div>
+        <button type="button" class="btn btn-primary btn-block" onclick="sumarArray()">Sumar</button>
+        <div id="resultado" class="mt-3"></div>
+    </div>
+
+    <!-- Bootstrap JS y otros scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function sumarArray() {
+            const inputArray = document.getElementById('input-array').value.trim();
+            const numbers = inputArray.split(',').map(num => parseInt(num.trim(), 10));
+            const suma = numbers.reduce((total, num) => total + num, 0);
+            document.getElementById('resultado').innerHTML = `<p class="text-center">La suma de los números es: <strong>${suma}</strong></p>`;
+        }
+    </script>
+</body>
+</html>
